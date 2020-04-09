@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>boardView</title>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
 </head>
 <body>
 	<div class="detail-wrap">
