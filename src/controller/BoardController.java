@@ -11,7 +11,6 @@ import model.Board;
 import service.BoardService;
 
 @Controller
-@RequestMapping("/board")
 public class BoardController {
 	@Autowired
 	BoardService boardService;
@@ -30,12 +29,12 @@ public class BoardController {
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
-		return "boardResult";
+		return "board/boardResult";
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String showWrite() {
-		return "boardWrite";
+		return "board/boardWrite";
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -51,7 +50,7 @@ public class BoardController {
 			msg = "수정 실패했습니다.";
 			url = "list";
 		}
-		mav.setViewName("boardResult");
+		mav.setViewName("board/boardResult");
 		mav.addObject("url", url);
 		mav.addObject("msg", msg);
 		return mav;
@@ -60,7 +59,7 @@ public class BoardController {
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String showModify(Model model, int num) {
 		model.addAttribute("board", boardService.getBoard(num));
-		return "boardModify";
+		return "board/boardModify";
 	}
 
 	@RequestMapping("/delete")
@@ -76,7 +75,7 @@ public class BoardController {
 			msg = "삭제 실패했습니다.";
 			url = "list";
 		}
-		mav.setViewName("boardResult");
+		mav.setViewName("board/boardResult");
 		mav.addObject("url", url);
 		mav.addObject("msg", msg);
 		return mav;
@@ -91,23 +90,24 @@ public class BoardController {
 				return "redirect:delete?num=" + num;
 			}
 		}
-		return "boardCheck";
+		return "board/boardCheck";
 	}
 
 	@RequestMapping(value = "/check", method = RequestMethod.GET)
 	public String showCheck() {
-		return "boardCheck";
+		return "board/boardCheck";
 	}
 
 	@RequestMapping("/view")
 	public String view(Model model, int num) {
 		model.addAttribute("board", boardService.getBoard(num));
-		return "boardView";
+		return "board/boardView";
 	}
 
 	@RequestMapping("/list")
 	public String list(Model model) {
+		System.out.println("!");
 		model.addAttribute("boardList", boardService.getAllBoards());
-		return "boardList";
+		return "board/boardList";
 	}
 }
