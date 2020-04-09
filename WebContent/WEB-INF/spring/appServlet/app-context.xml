@@ -10,8 +10,8 @@
 	<context:component-scan base-package="controller"/>
 
 	<mvc:annotation-driven/>
-	<mvc:resources location="/resources/css/" mapping="/resources/css/**"/>
-	<mvc:resources location="/resources/js/" mapping="/resources/js/**"/>
+	<mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</bean>
