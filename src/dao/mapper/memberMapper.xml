@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MemberDao">
+
+	<insert id="insertMember" parameterType="member">
+		insert into member (mNum, mID, mPass, mName)
+		values (member_seq.nextval, #{mID}, #{mPass}, #{mName})
+	</insert>
+	
+	<select id="selectMember" parameterType="int" resultType="member">
+		select * 
+		from member
+		where mNum=#{mNum}
+	</select>
+
+	<select id="selectMemberByID" parameterType="String" resultType="member">
+		select * 
+		from member
+		where mID=#{mID}
+	</select>	
+	
+</mapper>
