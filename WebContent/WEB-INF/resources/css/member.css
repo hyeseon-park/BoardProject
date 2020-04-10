@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+#wrap {
+	background-color: #424874;
+	height: 100%;
+    padding: 10px;
+}
+
+#signInBox, #signUpBox {
+	background-color: #f4eeff;
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 20px;
+	width: 300px;
+	height: 300px;
+	border-radius: 10px;
+}
+
+.box-upper, .box-lower {
+	text-align: center;
+	margin: 10px;
+}
