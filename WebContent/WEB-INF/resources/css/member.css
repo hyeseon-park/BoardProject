@@ -2,11 +2,12 @@
 
 #wrap {
 	background-color: #424874;
+	padding: 10px;
 	height: 100%;
-    padding: 10px;
 }
 
 #signInBox, #signUpBox {
+	border-radius: 10px;
 	background-color: #f4eeff;
 	margin: auto;
 	margin-top: 10%;
@@ -14,10 +15,45 @@
 	padding: 20px;
 	width: 300px;
 	height: 300px;
-	border-radius: 10px;
 }
 
 .box-upper, .box-lower {
-	text-align: center;
 	margin: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.box-upper h3 {
+	color: #a6b1e1;
+	font-size: 13pt;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.box-upper input {
+	border: 0px solid;
+	border-radius: 4px;
+	color: #a6b1e1;
+	font-size: 13pt;
+	margin-bottom: 1px;
+	text-align: center;
+	height: 35px;
+}
+
+.box-lower input {
+	border: 0px solid;
+	border-radius: 4px;
+	background-color: #a6b1e1;
+	color: #424874;
+	cursor: pointer;
+	padding: 5px;
+	width: 30%;
+	height: 35px;
+}
+
+#signInBox h4 {
+	color: #a6b1e1;
+	font-size: 20pt;
+	margin: 0px;
+	text-align: center;
 }

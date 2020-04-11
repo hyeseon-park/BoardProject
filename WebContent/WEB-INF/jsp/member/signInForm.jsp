@@ -1,20 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>signInForm</title>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/member.css"/>
 </head>
 <body>
-	<div>
-		<form action="signIn" method="post">
-			<label>아이디 : <input type="text" name="mID"></label><br>
-			<label>비밀번호 : <input type="password" name="mPass"></label><br>
-			<input type="submit" value="로그인">
-			<input type="button" value="회원가입" onclick="location.href='signUp'"><br>
-		</form>
-		<h3><%= request.getAttribute("msg") %></h3>
+	<div id="wrap">
+		<div id="signInBox">
+			<form action="signIn" method="post">
+				<div class="box-upper">
+					<h3>아이디</h3>
+					<input type="text" name="mID">
+					<h3>비밀번호</h3>
+					<input type="password" name="mPass">
+				</div>
+				<div class="box-lower">
+					<input type="submit" value="로그인">
+					<input type="button" value="회원가입" onclick="location.href='signUp'"><br>
+				</div>
+			</form>
+			<h4><%= request.getAttribute("msg") %></h4>
+		</div>
 	</div>
 </body>
 </html>
