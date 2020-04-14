@@ -153,3 +153,43 @@
 	width: 100px;
 	height: 35px;
 }
+
+/* boardModify */
+#boardInner #modify {
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 10px;
+	width: 700px;
+}
+
+#boardInner #modify div {
+	border: 1px solid #a6b1e1;
+	border-radius: 5px;
+	line-height: 30px;
+	margin: 2px 0px;
+	padding: 0 10px;
+}
+
+#boardInner #modify input[type='text'], #boardInner #modify input[type='password']
+	{
+	border: 0px;
+}
+
+#boardInner #modify textarea {
+	border: 0px;
+	line-height: 20px;
+	min-height: 120px;
+	padding: 20px 20px;
+}
+
+#boardInner #modify>input {
+	border: 0px solid;
+	border-radius: 4px;
+	background-color: #a6b1e1;
+	color: #424874;
+	cursor: pointer;
+	padding: 5px;
+	width: 100px;
+	height: 35px;
+}
