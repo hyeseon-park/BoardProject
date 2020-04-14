@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 /* board 공통 */
-
 #boardInner {
 	position: relative;
 	width: 100%;
@@ -10,7 +9,6 @@
 }
 
 /* boardList.jsp */
-
 #boardInner #list {
 	margin: auto;
 	margin-top: 10%;
@@ -75,4 +73,43 @@
 
 #boardInner #writeButton:hover {
 	background-color: #f4eeff;
+}
+
+/* boardView.jsp */
+#boardInner #detail {
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 10px;
+	width: 700px;
+}
+
+#boardInner #detail div {
+	border: 1px solid #a6b1e1;
+	border-radius: 5px;
+	margin: 2px 0px;
+	padding: 1px;
+}
+
+#boardInner #detail .bold {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+#boardInner #detail #content {
+	min-height: 120px;
+	padding: 20px 20px;
+	line-height: 20px;
+}
+
+#boardInner #detail button {
+	border: 0px solid;
+	border-radius: 4px;
+	background-color: #a6b1e1;
+	color: #424874;
+	cursor: pointer;
+	padding: 5px;
+	width: 100px;
+	height: 35px;
 }
