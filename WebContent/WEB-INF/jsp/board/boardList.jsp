@@ -10,25 +10,26 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
 </head>
 <body>
-	<div>
-		<table id="boardListTable">
-			<tr>
-				<td colspan="6"><a href="write">글쓰기</a></td>
-			</tr>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-			</tr>
-			<c:forEach items="${boardList}" var="board">
-				<tr>
-					<td>${board.num}</td>
-					<td><a href="view?num=${board.num}">${board.title}</a></td>
-					<td>${board.name}</td>
-				</tr>
-			</c:forEach>
-		</table>
+	<div id="boardInner">
+		<div id="list">
+			<ul>
+				<li>
+					<div><a id="writeButton" href="write">글쓰기</a></div>
+				</li>
+				<li id="listHead">
+					<div>번호</div>
+					<div>제목</div>
+					<div>작성자</div>
+				</li>
+				<c:forEach items="${boardList}" var="board">
+					<li>
+						<div>${board.num}</div>
+						<div><a href="view?num=${board.num}">${board.title}</a></div>
+						<div>${board.name}</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
 	</div>
-	<br>
 </body>
 </html>

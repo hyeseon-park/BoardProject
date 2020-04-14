@@ -1,9 +1,78 @@
 @charset "UTF-8";
 
-#boardListTable {
-	background-color: #faf2ff;
+/* board 공통 */
+
+#boardInner {
 	position: relative;
 	width: 100%;
 	max-width: 1280px;
-	margin: 35px auto 20px;
+	margin: 30px auto 30px;
+}
+
+/* boardList.jsp */
+
+#boardInner #list {
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 10px;
+	width: 700px;
+}
+
+#boardInner #list ul {
+	margin-bottom: 15px;
+	padding-left: 0px;
+}
+
+#boardInner #list ul li {
+	line-height: 30px;
+	padding: 5px 0;
+	border-bottom: 1px solid #edefff;
+}
+
+#boardInner #list ul div {
+	height: 100%;
+	float: left;
+	text-align: center;
+	padding: 0 5px;
+}
+
+#boardInner #list ul #listHead {
+	background-color: #a6b1e1;
+	border-top: 1px solid #edefff;
+}
+
+#boardInner #list ul #listHead>div {
+	text-align: center;
+}
+
+#boardInner #list ul div:nth-child(1) {
+	width: 100px;
+}
+
+#boardInner #list ul div:nth-child(2) {
+	width: calc(100% - 250px);
+	text-align: left;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#boardInner #list ul div:nth-child(3) {
+	width: 50px;
+}
+
+#boardInner #writeButton {
+	border: 0px solid;
+	border-radius: 4px;
+	background-color: #a6b1e1;
+	color: #424874;
+	cursor: pointer;
+	padding: 5px;
+	width: 30%;
+	height: 35px;
+}
+
+#boardInner #writeButton:hover {
+	background-color: #f4eeff;
 }
