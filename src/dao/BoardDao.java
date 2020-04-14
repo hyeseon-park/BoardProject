@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import model.Board;
 
@@ -14,4 +15,6 @@ public interface BoardDao {
 	public Board selectBoard(int num);
 
 	public List<Board> selectAllBoards();
+	
+	public int insertFile(Map<String, Object> fileParam);
 }

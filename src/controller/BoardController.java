@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Board;
@@ -16,8 +17,8 @@ public class BoardController {
 	BoardService boardService;
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(Board board, Model model) {
-		boolean result = boardService.writeBoard(board);
+	public String write(Board board, Model model, MultipartFile file) {
+		boolean result = boardService.writeBoard(board, file);
 		String msg = "";
 		String url = "";
 		if (result) {
@@ -106,7 +107,6 @@ public class BoardController {
 
 	@RequestMapping("/list")
 	public String list(Model model) {
-		System.out.println("!");
 		model.addAttribute("boardList", boardService.getAllBoards());
 		return "board/boardList";
 	}

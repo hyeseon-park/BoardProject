@@ -20,12 +20,17 @@
 	
 	<select id="selectBoard" parameterType="int" resultType="board">
 		select * 
-		from board
-		where num=#{num}
+		from board b, uploadfile f
+		where b.num=#{num} 
+		and b.num=f.num(+) 
 	</select>
 	
 	<select id="selectAllBoards" resultType="board">
 		select * from board
 	</select>
 	
+	<insert id="insertFile" parameterType="map">
+		insert into uploadfile (fNum, num, fName)
+		values (uploadfile_seq.nextval, #{num}, #{fName})
+	</insert>
 </mapper>
