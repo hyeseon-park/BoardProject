@@ -193,3 +193,39 @@
 	width: 100px;
 	height: 35px;
 }
+
+/* boardCheck */
+#boardInner #check {
+	border-radius: 5px;
+	background-color: #f4eeff;
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 10px;
+	width: 300px;
+	height: 120px;
+}
+
+#boardInner #check div {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+#boardInner #check input[type='password'] {
+	border: 1px solid #D1D1D1;
+	border-radius: 5px;
+	line-height: 30px;
+	height: 30px;
+	padding: 0 10px;
+}
+
+#boardInner #check #buttons input {
+	border: 0px solid;
+	border-radius: 4px;
+	background-color: #a6b1e1;
+	color: #424874;
+	cursor: pointer;
+	padding: 5px;
+	width: 100px;
+	height: 35px;
+}
