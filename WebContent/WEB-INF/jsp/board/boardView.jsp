@@ -34,62 +34,63 @@
 			<button onclick="location.href='list'">목록</button>
 			<button onclick="location.href='write'">새글쓰기</button>
 		</div>
+		
 		<%-- 댓글 보기 --%>
-		<table id="replies" border="1">
-			<tr>
-				<th>이름</th>
-				<th>내용</th>
-				<th>편집</th>
-			</tr>
-		</table><br>
+		<div id="replies">
+			<ul>
+				<li>이름</li>
+				<li>내용</li>
+				<li>편집</li>
+			</ul>
+		</div>
+		
 		<%-- 모달 창 --%>
 		<div class="modal-modify" id="reply-modal">
 			<form id="modal-form">
-				<table class="modal-table">
-					<tr>
-						<th>이름</th>
-						<td><input type="text" name="name" id="modal-name"></td>
-					</tr>
-					<tr>
-						<th>비밀번호</th>
-						<td><input type="password" name="pass" id="modal-password"></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td><textarea rows="3" cols="30" name="content" id="modal-content"></textarea></td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input type="hidden" name="id" id="modal-id">
-							<input type="button" id="btnModify" value="수정">
-							<input type="button" id="btnDelete" value="삭제">
-							<input type="button" id="btnClose" value="닫기">
-						</td>
-					</tr>
-				</table>
+				<div class="modal-table">
+					<div>
+						<span>이름</span>
+						<input type="text" name="name" id="modal-name">
+					</div>
+					<div>
+						<span>비밀번호</span>
+						<input type="password" name="pass" id="modal-password">
+					</div>
+					<div>
+						<span>내용</span>
+						<textarea rows="3" cols="30" name="content" id="modal-content"></textarea>
+					</div>
+					<div>
+						<input type="hidden" name="id" id="modal-id">
+						<input type="button" id="btnModify" value="수정">
+						<input type="button" id="btnDelete" value="삭제">
+						<input type="button" id="btnClose" value="닫기">
+					</div>
+				</div>
 			</form>
 		</div>
+		
 		<%-- 댓글 입력 --%>
 		<div class="reply-wrap">
 			<form id="replyForm">
-				<table id="replyTable">
-					<tr>
-						<th>이름</th>
-						<td><input type="text" name="name" id="r_name"></td>
-						<th>비밀번호</th>
-						<td><input type="password" name="pass" id="r_password"></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td colspan="3"><textarea rows="3" cols="30" name="content" id="r_content"></textarea></td>
-					</tr>
-					<tr>
-						<td align="center" colspan="4">
-							<input type="hidden" name="boardNum" value="${board.num}">
-							<input type="submit" value="작성">
-						</td>
-					</tr>
-				</table>
+				<div id="replyTable">
+					<div>
+						<span>이름</span>
+						<input type="text" name="name" id="r_name">
+					</div>
+					<div>
+						<span>비밀번호</span>
+						<input type="password" name="pass" id="r_password">
+					</div>
+					<div>
+						<span>내용</span>
+						<textarea rows="3" cols="30" name="content" id="r_content"></textarea>
+					</div>
+					<div>
+						<input type="hidden" name="boardNum" value="${board.num}">
+						<input type="submit" value="작성">
+					</div>
+				</div>
 			</form>
 		</div>		
 	</div>
