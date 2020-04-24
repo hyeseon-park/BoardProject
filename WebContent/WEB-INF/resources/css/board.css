@@ -12,6 +12,12 @@
 #boardInner #list {
 	margin: auto;
 	margin-top: 10%;
+	padding: 10px;
+	width: 700px;
+}
+
+#boardInner #listSearch {
+	margin: auto;
 	margin-bottom: 10%;
 	padding: 10px;
 	width: 700px;

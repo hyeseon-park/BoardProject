@@ -30,6 +30,18 @@
 				</c:forEach>
 			</ul>
 		</div>
+		<div id="listSearch">
+			<form action="list">
+				<select name="type">
+					<option value="1">제목</option>
+					<option value="2">내용</option>
+					<option value="3">제목+내용</option>
+					<option value="4">작성자</option>
+				</select>
+				<input type="text" name="keyword" placeholder="검색어를 입력하세요.">
+				<input type="submit" value="검색">
+			</form>
+		</div>		
 	</div>
 </body>
 </html>

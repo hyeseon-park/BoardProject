@@ -28,4 +28,23 @@
 		select * from board
 	</select>
 	
+	<select id="searchBoardList" parameterType="map" resultType="board">
+		select num, title, name 
+		from board
+		where 1=0
+		<if test="title != null">
+			or title like ('%${title}%')
+		</if>
+		<if test="content != null">
+			or content like ('%${content}%')
+		</if>
+		<if test="name != null">
+			or name like ('%${name}%')
+		</if>
+		<if test="type == 0">
+			or 1=1
+		</if>
+			order by num desc
+	</select>
+	
 </mapper>

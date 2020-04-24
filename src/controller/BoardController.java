@@ -1,10 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
@@ -107,11 +111,16 @@ public class BoardController {
 	}
 
 	@RequestMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("boardList", boardService.getAllBoards());
+	public String list(Model model, @RequestParam(defaultValue="0")int type, @RequestParam(required = false)String keyword) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		Map<String, Object> result = boardService.getSearchBoardList(param);
+		model.addAllAttributes(result);
+		boardService.getSearchBoardList(param);
 		return "board/boardList";
 	}
-	
+
 	@RequestMapping("/download")
 	public View download(int num) {
 		return boardService.getAttachment(num);

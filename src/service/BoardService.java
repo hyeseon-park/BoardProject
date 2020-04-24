@@ -76,6 +76,25 @@ public class BoardService {
 	public List<Board> getAllBoards() {
 		return boardDao.selectAllBoards();
 	}
+	
+	public Map<String, Object> getSearchBoardList(Map<String, Object> param) {
+		Map<String, Object> result = null;
+		int type = (Integer)param.get("type");
+		String keyword = (String)param.get("keyword");
+		if(type == 1) {
+			param.put("title", keyword);
+		} else if(type == 2) {
+			param.put("content", keyword);
+		} else if(type == 3) {
+			param.put("title", keyword);
+			param.put("content", keyword);
+		} else if(type == 4) {
+			param.put("name", keyword);
+		}
+		List<Board> searchedList = boardDao.searchBoardList(param);
+		result.put("boardList", searchedList);
+		return result;
+	}
 
 	public View getAttachment(int num) {
 		Board board = boardDao.selectBoard(num);

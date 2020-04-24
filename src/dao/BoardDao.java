@@ -15,4 +15,6 @@ public interface BoardDao {
 	public Board selectBoard(int num);
 
 	public List<Board> selectAllBoards();
+	
+	public List<Board> searchBoardList(Map<String, Object> param);
 }
