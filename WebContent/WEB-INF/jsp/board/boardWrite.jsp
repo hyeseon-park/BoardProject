@@ -40,7 +40,7 @@
 				<div>
 					<label>
 						<span>내용</span>
-						<textarea rows="10" cols="30" name="content"></textarea>
+						<textarea rows="20" cols="80" name="content"></textarea>
 					</label>
 				</div>
 				<input type="submit" value="등록">
