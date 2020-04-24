@@ -13,6 +13,19 @@
   crossorigin="anonymous"/></script>
 <script type="text/javascript">
 
+$(function() {
+	var fName = getOriginFileName('${board.fName}');
+	$("#attachFile").text(fName);
+})
+
+function getOriginFileName(fName) {
+	if(fName == null) {
+		return;
+	}
+	var index = fName.indexOf("_");
+	return fName.substring(index+1);
+}
+
 </script>
 </head>
 <body>
@@ -29,6 +42,10 @@
 			<div class="row">
 				<span>작성자</span>
 				<span class="bold">${board.name}</span>
+			</div>
+			<div>
+				<span>첨부파일</span>
+				<a href="download?num=${board.num}" id="attachFile"></a>
 			</div>
 			<div id="content">
 				<span class="bold">${board.content}</span>

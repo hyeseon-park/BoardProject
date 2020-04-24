@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
+import common.DownloadView;
 import dao.BoardDao;
 import model.Board;
 
@@ -22,17 +24,18 @@ public class BoardService {
 	private static final String UPLOAD_PATH = "c:\\files";
 
 	public boolean writeBoard(Board board, MultipartFile file) {
-		if (boardDao.insertBoard(board) > 0) {
-			if (file.isEmpty()) {
+		if (file.isEmpty()) {
+			return true;
+		} else {
+			String changedName = writeFile(file);
+			Map<String, Object> fileParam = new HashMap<String, Object>();
+			fileParam.put("title", board.getTitle());
+			fileParam.put("content", board.getContent());
+			fileParam.put("pass", board.getPass());
+			fileParam.put("name", board.getName());
+			fileParam.put("fName", changedName);
+			if (boardDao.insertBoard(fileParam) > 0) {
 				return true;
-			} else {
-				String changedName = writeFile(file);
-				Map<String, Object> fileParam = new HashMap<String, Object>();
-				fileParam.put("num", board.getNum());
-				fileParam.put("fName", changedName);
-				if (boardDao.insertFile(fileParam) > 0) {
-					return true;
-				}
 			}
 		}
 		return false;
@@ -72,5 +75,12 @@ public class BoardService {
 
 	public List<Board> getAllBoards() {
 		return boardDao.selectAllBoards();
+	}
+
+	public View getAttachment(int num) {
+		Board board = boardDao.selectBoard(num);
+		File file = new File(UPLOAD_PATH, board.getfName());
+		View view = new DownloadView(file);
+		return view;
 	}
 }

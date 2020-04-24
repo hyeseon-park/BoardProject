@@ -6,6 +6,7 @@ public class Board {
 	private String content;
 	private String pass;
 	private String name;
+	private String fName;
 	
 	public int getNum() {
 		return num;
@@ -37,8 +38,15 @@ public class Board {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getfName() {
+		return fName;
+	}
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
 	@Override
 	public String toString() {
-		return "Board [num=" + num + ", title=" + title + ", content=" + content + ", pass=" + pass + ", name=" + name + "]";
+		return "Board [num=" + num + ", title=" + title + ", content=" + content + ", pass=" + pass + ", name=" + name
+				+ ", fName=" + fName + "]";
 	}
 }

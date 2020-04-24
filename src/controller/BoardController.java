@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import model.Board;
 import service.BoardService;
@@ -109,5 +110,10 @@ public class BoardController {
 	public String list(Model model) {
 		model.addAttribute("boardList", boardService.getAllBoards());
 		return "board/boardList";
+	}
+	
+	@RequestMapping("/download")
+	public View download(int num) {
+		return boardService.getAttachment(num);
 	}
 }

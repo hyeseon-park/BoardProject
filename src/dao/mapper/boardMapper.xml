@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.BoardDao">
 
-	<insert id="insertBoard" parameterType="board">
-		insert into board (num, title, content, pass, name)
-		values (board_seq.nextval, #{title}, #{content}, #{pass}, #{name})
+	<insert id="insertBoard" parameterType="map">
+		insert into board (num, title, content, pass, name, fName)
+		values (board_seq.nextval, #{title}, #{content}, #{pass}, #{name}, #{fName})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
@@ -20,17 +20,12 @@
 	
 	<select id="selectBoard" parameterType="int" resultType="board">
 		select * 
-		from board b, uploadfile f
+		from board b
 		where b.num=#{num} 
-		and b.num=f.num(+) 
 	</select>
 	
 	<select id="selectAllBoards" resultType="board">
 		select * from board
 	</select>
 	
-	<insert id="insertFile" parameterType="map">
-		insert into uploadfile (fNum, num, fName)
-		values (uploadfile_seq.nextval, #{num}, #{fName})
-	</insert>
 </mapper>

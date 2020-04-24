@@ -6,7 +6,7 @@ import java.util.Map;
 import model.Board;
 
 public interface BoardDao {
-	public int insertBoard(Board board);
+	public int insertBoard(Map<String, Object> fileParam);
 
 	public int updateBoard(Board board);
 
@@ -15,6 +15,4 @@ public interface BoardDao {
 	public Board selectBoard(int num);
 
 	public List<Board> selectAllBoards();
-	
-	public int insertFile(Map<String, Object> fileParam);
 }
