@@ -76,23 +76,23 @@ public class BoardService {
 	public List<Board> getAllBoards() {
 		return boardDao.selectAllBoards();
 	}
-	
-	public Map<String, Object> getSearchBoardList(Map<String, Object> param) {
-		Map<String, Object> result = null;
-		int type = (Integer)param.get("type");
-		String keyword = (String)param.get("keyword");
-		if(type == 1) {
+
+	public Map<String, Object> getSearchedBoards(Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		int type = (Integer) param.get("type");
+		String keyword = (String) param.get("keyword");
+		if (type == 1) {
 			param.put("title", keyword);
-		} else if(type == 2) {
+		} else if (type == 2) {
 			param.put("content", keyword);
-		} else if(type == 3) {
+		} else if (type == 3) {
 			param.put("title", keyword);
 			param.put("content", keyword);
-		} else if(type == 4) {
+		} else if (type == 4) {
 			param.put("name", keyword);
 		}
-		List<Board> searchedList = boardDao.searchBoardList(param);
-		result.put("boardList", searchedList);
+		List<Board> boardList = boardDao.selectSearchedBoards(param);
+		result.put("boardList", boardList);
 		return result;
 	}
 

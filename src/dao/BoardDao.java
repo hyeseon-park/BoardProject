@@ -16,5 +16,5 @@ public interface BoardDao {
 
 	public List<Board> selectAllBoards();
 	
-	public List<Board> searchBoardList(Map<String, Object> param);
+	public List<Board> selectSearchedBoards(Map<String, Object> param);
 }

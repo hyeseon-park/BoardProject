@@ -28,7 +28,7 @@
 		select * from board
 	</select>
 	
-	<select id="searchBoardList" parameterType="map" resultType="board">
+	<select id="selectSearchedBoards" parameterType="map" resultType="board">
 		select num, title, name 
 		from board
 		where 1=0

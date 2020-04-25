@@ -111,13 +111,12 @@ public class BoardController {
 	}
 
 	@RequestMapping("/list")
-	public String list(Model model, @RequestParam(defaultValue="0")int type, @RequestParam(required = false)String keyword) {
+	public String list(Model model, @RequestParam(defaultValue = "0") int type, @RequestParam(required = false) String keyword) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("type", type);
 		param.put("keyword", keyword);
-		Map<String, Object> result = boardService.getSearchBoardList(param);
+		Map<String, Object> result = boardService.getSearchedBoards(param);
 		model.addAllAttributes(result);
-		boardService.getSearchBoardList(param);
 		return "board/boardList";
 	}
 
