@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,9 @@ public class MemberService {
 
 	public Member getMemberByID(String mID) {
 		return memberDao.selectMemberByID(mID);
+	}
+	
+	public List<String> getAuthoritiesByMNum(int mNum) {
+		return memberDao.selectAuthoritiesByMNum(mNum);
 	}
 }

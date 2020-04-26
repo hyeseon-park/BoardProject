@@ -18,5 +18,10 @@
 		from member
 		where mID=#{mID}
 	</select>	
-	
+
+	<select id="selectAuthoritiesByMNum" parameterType="int" resultType="String">
+		select authority
+		from authority
+		where mNum=#{mNum}
+	</select>	
 </mapper>
