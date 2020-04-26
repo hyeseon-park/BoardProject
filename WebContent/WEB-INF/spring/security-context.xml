@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="service"></context:component-scan>
+	
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/list" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/signOut" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_MANAGER')"/>
+		<security:access-denied-handler error-page="/noAuth"/>
+		<security:form-login login-page="/signInForm" 
+							 authentication-failure-url="/signInForm?signIn=fail"
+							 login-processing-url="/signIn"
+							 default-target-url="/list"
+							 username-parameter="mID"
+							 password-parameter="mPass"/>
+		<security:logout logout-success-url="/signIn"
+						 invalidate-session="true"
+						 logout-url="/signOut"
+						 delete-cookies="JSESSIONID"/>
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="memberDetailService"></security:authentication-provider>
+	</security:authentication-manager>
+</beans>
