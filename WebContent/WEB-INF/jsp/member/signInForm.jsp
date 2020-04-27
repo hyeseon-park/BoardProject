@@ -25,12 +25,12 @@
 					<input type="button" value="회원가입" onclick="location.href='signUp'"><br>
 				</div>
 			</form>
-<%-- 			<c:if test='${param.login eq "false"}'> --%>
-<!-- 				로그인을 안 했군요? 로그인 후에 이용하세요. -->
-<%-- 			</c:if> --%>
-<%-- 			<c:if test='${param.login eq "fail"}'> --%>
-<!-- 				로그인에 실패했습니다. 아이디 또는 비밀번호를 확인해주세요. -->
-<%-- 			</c:if> --%>
+			<c:if test='${param.signIn eq "false"}'>
+				로그인 후에 이용해주세요.
+			</c:if>
+			<c:if test='${param.signIn eq "fail"}'>
+				로그인에 실패했습니다.
+			</c:if>
 		</div>
 	</div>
 </body>
