@@ -14,6 +14,7 @@
 		<div id="signInBox">
 			<form action="signIn" method="post">
 				<div class="box-upper">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<h3>아이디</h3>
 					<input type="text" name="mID">
 					<h3>비밀번호</h3>
@@ -24,7 +25,12 @@
 					<input type="button" value="회원가입" onclick="location.href='signUp'"><br>
 				</div>
 			</form>
-			<h4><%= request.getAttribute("msg") %></h4>
+<%-- 			<c:if test='${param.login eq "false"}'> --%>
+<!-- 				로그인을 안 했군요? 로그인 후에 이용하세요. -->
+<%-- 			</c:if> --%>
+<%-- 			<c:if test='${param.login eq "fail"}'> --%>
+<!-- 				로그인에 실패했습니다. 아이디 또는 비밀번호를 확인해주세요. -->
+<%-- 			</c:if> --%>
 		</div>
 	</div>
 </body>
