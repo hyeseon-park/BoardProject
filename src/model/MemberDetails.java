@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import common.Role;
 
-public class MemberDatails implements UserDetails {
+public class MemberDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private String mID;
 	private String mPass;
@@ -18,50 +18,44 @@ public class MemberDatails implements UserDetails {
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
-	
-	public MemberDatails() {
+
+	public MemberDetails() {
 		authorities = new ArrayList<Role>();
-		isAccountNonExpired=true;
-		isAccountNonLocked=true;
-		isCredentialsNonExpired=true;
-		isEnabled=true;		
-	}
-	
-	public void addAuth(String auth) {
-		authorities.add(new Role(auth));
+		isAccountNonExpired = true;
+		isAccountNonLocked = true;
+		isCredentialsNonExpired = true;
+		isEnabled = true;
 	}
 
-	@Override
+	public void addAuth(String auth) {
+		Role role = new Role(auth);
+		authorities.add(role);
+	}
+
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
 	}
 
-	@Override
+	public String getUsername() {
+		return mID;
+	}
+	
 	public String getPassword() {
 		return mPass;
 	}
 
-	@Override
-	public String getUsername() {
-		return mID;
-	}
-
-	@Override
 	public boolean isAccountNonExpired() {
 		return isAccountNonExpired;
 	}
 
-	@Override
 	public boolean isAccountNonLocked() {
 		return isAccountNonLocked;
 	}
 
-	@Override
 	public boolean isCredentialsNonExpired() {
 		return isCredentialsNonExpired;
 	}
 
-	@Override
 	public boolean isEnabled() {
 		return isEnabled;
 	}
@@ -80,6 +74,10 @@ public class MemberDatails implements UserDetails {
 
 	public void setmPass(String mPass) {
 		this.mPass = mPass;
+	}
+
+	public void setAuthorities(List<Role> authorities) {
+		this.authorities = authorities;
 	}
 
 	public void setAccountNonExpired(boolean isAccountNonExpired) {
