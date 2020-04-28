@@ -6,28 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import model.Member;
-import model.MemberDatails;
+import model.MemberDetails;
 
-@Service
-public class MemberDatailsService implements UserDetailsService{
+@Component
+public class MemberDetailsService implements UserDetailsService {
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String mID) throws UsernameNotFoundException {
-		Member originalMember = memberService.getMemberByID(mID);
+		Member originalMember = memberService.getMemberByMID(mID);
 		String mPass = originalMember.getmPass();
 		int mNum = originalMember.getmNum();
 		List<String> authList = memberService.getAuthoritiesByMNum(mNum);
-		MemberDatails member = new MemberDatails();
+		MemberDetails member = new MemberDetails();
 		member.setmID(mID);
 		member.setmPass(mPass);
-		for(String auth: authList) {
+		for (String auth : authList) {
 			member.addAuth(auth);
 		}
 		return member;
 	}
+
 }
