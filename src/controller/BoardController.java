@@ -17,6 +17,7 @@ import model.Board;
 import service.BoardService;
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 	@Autowired
 	BoardService boardService;

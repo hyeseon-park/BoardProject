@@ -26,7 +26,7 @@
 				</div>
 			</form>
 			<c:if test='${param.signIn eq "false"}'>
-				로그인 후에 이용해주세요.
+				권한이 없습니다.
 			</c:if>
 			<c:if test='${param.signIn eq "fail"}'>
 				로그인에 실패했습니다.
