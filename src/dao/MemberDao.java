@@ -9,7 +9,9 @@ public interface MemberDao {
 
 	public Member selectMember(int num);
 
-	public Member selectMemberByID(String mID);
+	public Member selectMemberByMID(String mID);
+	
+	public int insertAuthority(int mNum);
 	
 	public List<String> selectAuthoritiesByMNum(int mNum);
 }

@@ -12,11 +12,11 @@ import model.Member;
 import service.MemberService;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 	@Autowired
 	MemberService memberService;
-	
-	//회원가입
+
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public String signUp(Member member, Model model) {
 		boolean result = memberService.signUpMember(member);
@@ -34,32 +34,15 @@ public class MemberController {
 	public String showSignUp() {
 		return "member/signUpForm";
 	}
-	
-	//로그인
-	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
-	public String signIn(Model model, String mID, String mPass) {
-		if (mPass.equals(memberService.getMemberByID(mID).getmPass())) {
-			return "redirect:list";
-		} else {
-			model.addAttribute("msg", "로그인 실패했습니다.");
-			return "member/signInForm";
-		}
-	}
 
 	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
 	public String showSignIn() {
 		return "member/signInForm";
 	}
-	
-	//
+
 	@RequestMapping(value = "/signOut")
 	public String signOut(HttpSession session) {
 		session.invalidate();
 		return "redirect:signInForm";
-	}
-	
-	@RequestMapping(value = "/noAuth")
-	public String showNoAuth(HttpSession session, Model model) {
-		return "member/noAuth";
 	}
 }

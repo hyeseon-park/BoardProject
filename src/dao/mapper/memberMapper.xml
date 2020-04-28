@@ -3,8 +3,11 @@
 <mapper namespace="dao.MemberDao">
 
 	<insert id="insertMember" parameterType="member">
+		<selectKey order="BEFORE" keyProperty="mNum" resultType="int">
+			select member_seq.nextval from dual
+		</selectKey>
 		insert into member (mNum, mID, mPass, mName)
-		values (member_seq.nextval, #{mID}, #{mPass}, #{mName})
+		values (#{mNum}, #{mID}, #{mPass}, #{mName})
 	</insert>
 	
 	<select id="selectMember" parameterType="int" resultType="member">
@@ -13,11 +16,16 @@
 		where mNum=#{mNum}
 	</select>
 
-	<select id="selectMemberByID" parameterType="String" resultType="member">
+	<select id="selectMemberByMID" parameterType="String" resultType="member">
 		select * 
 		from member
 		where mID=#{mID}
 	</select>	
+	
+	<insert id="insertAuthority" parameterType="member">
+		insert into authority (mNum, authority)
+		values (#{mNum}, 'ROLE_USER')
+	</insert>
 
 	<select id="selectAuthoritiesByMNum" parameterType="int" resultType="String">
 		select authority

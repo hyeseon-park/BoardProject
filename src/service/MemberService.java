@@ -15,7 +15,10 @@ public class MemberService {
 
 	public boolean signUpMember(Member member) {
 		if (memberDao.insertMember(member) > 0) {
-			return true;
+			if (memberDao.insertAuthority(member.getmNum()) > 0) {
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
@@ -24,10 +27,10 @@ public class MemberService {
 		return memberDao.selectMember(num);
 	}
 
-	public Member getMemberByID(String mID) {
-		return memberDao.selectMemberByID(mID);
+	public Member getMemberByMID(String mID) {
+		return memberDao.selectMemberByMID(mID);
 	}
-	
+
 	public List<String> getAuthoritiesByMNum(int mNum) {
 		return memberDao.selectAuthoritiesByMNum(mNum);
 	}
