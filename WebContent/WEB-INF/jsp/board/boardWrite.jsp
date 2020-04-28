@@ -13,6 +13,7 @@
 	<div id="boardInner">
 		<form action="write" method="post" id="writeForm" enctype="multipart/form-data">
 			<div id="write">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="row">
 					<label>
 						<span>제목</span>

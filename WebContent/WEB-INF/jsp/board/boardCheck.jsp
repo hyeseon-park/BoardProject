@@ -13,6 +13,7 @@
 	<div id="boardInner">
 		<form action="check" method="post">
 			<div id="check">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="row">
 					<span>비밀번호를 입력하세요.</span>
 				</div>

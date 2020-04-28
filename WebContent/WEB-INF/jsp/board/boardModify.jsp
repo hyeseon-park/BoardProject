@@ -13,6 +13,7 @@
 	<div id="boardInner">
 		<form action="modify" method="post" id="modifyForm">
 			<div id="modify">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="row">
 					<label>
 						<span>번호</span>
