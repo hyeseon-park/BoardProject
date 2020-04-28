@@ -14,6 +14,7 @@
 		<div id="signUpBox">
 			<form action="signUp" method="post">
 				<div class="box-upper">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<h3>아이디</h3>
 					<input type="text" name="mID">
 					<h3>비밀번호</h3>
