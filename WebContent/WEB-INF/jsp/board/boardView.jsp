@@ -8,14 +8,41 @@
 <meta charset="UTF-8">
 <title>boardView</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"/></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+  
 <script type="text/javascript">
 
 $(function() {
 	var fName = getOriginFileName('${board.fName}');
 	$("#attachFile").text(fName);
+	
+	createReplyList();
+
+	$("#replyForm").on("submit", function() {
+		var d = $(this).serialize();
+		$.ajax({
+			url: "../reply/write",
+			data: d, 
+			type: "post",
+			dataType : "json",
+			success : function(data) {
+				if(data) {
+					$("#replyForm").reset();
+					alert("등록 성공");
+				} else {
+					alert("등록 실패");
+				}
+				createReplyList();
+			},
+			error: function(request, status, error) {
+				alert("request:"+request+" status:"+status+" error:"+error);
+			}
+		})
+		return false;
+	});	
 })
 
 function getOriginFileName(fName) {
@@ -24,6 +51,42 @@ function getOriginFileName(fName) {
 	}
 	var index = fName.indexOf("_");
 	return fName.substring(index+1);
+}
+
+function createReplyList() {
+	console.log("createReplyList");
+	
+	$("#replies tr:gt(0)").remove();
+	var repliesDiv = $("#replies");
+	var bNum = ${board.num};
+	
+	$.ajax({
+		url:"${contextPath}/reply/all/"+bNum,
+		type:"get",
+		dataType:"json",
+		success: function(replyList) {
+			for(var i in replyList) {
+				var div = $("<div>");
+				var button = $("<button>편집</button>");
+				div.append($("<div>").text(replyList[i].rName));
+				div.append($("<div>").text(replyList[i].rContent));
+				div.append($("<div>").append(button));
+				div.appendTo(repliesDiv);
+				
+				(function(j) {
+					button.on("click", function() {
+						$("#replyModifyForm").show("slow");
+						$("#modal-name").val(replyList[j].rName);
+						$("#modal-pass").val(replyList[j].rPass);
+						$("#modal-content").val(replyList[j].rContent);
+					});
+				})(i)
+			}
+		},
+		error: function(request, status, error) {
+			alert("request:"+request+" status:"+status+" error:"+error);
+		}
+	});
 }
 
 </script>
@@ -64,20 +127,21 @@ function getOriginFileName(fName) {
 		<%-- 댓글 입력 --%>
 		<div id="replyWriteForm">
 			<form id="replyForm">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 				<div>
 					<span>이름</span>
-					<input type="text" name="name" id="r_name">
+					<input type="text" name="rName" id="r_name">
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="pass" id="r_password">
+					<input type="password" name="rPass" id="r_pass">
 				</div>
 				<div>
 					<span>내용</span>
-					<textarea rows="3" cols="30" name="content" id="r_content"></textarea>
+					<textarea rows="3" cols="30" name="rContent" id="r_content"></textarea>
 				</div>
 				<div>
-					<input type="hidden" name="boardNum" value="${board.num}">
+					<input type="hidden" name="bNum" value="${board.num}">
 					<input type="submit" value="작성">
 				</div>
 			</form>
@@ -88,24 +152,25 @@ function getOriginFileName(fName) {
 			<form id="replyFormModal">
 				<div>
 					<span>이름</span>
-					<input type="text" name="name" id="modal-name">
+					<input type="text" name="rName" id="modal-name">
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="pass" id="modal-password">
+					<input type="password" name="rPass" id="modal-pass">
 				</div>
 				<div>
 					<span>내용</span>
-					<textarea rows="3" cols="30" name="content" id="modal-content"></textarea>
+					<textarea rows="3" cols="30" name="rContent" id="modal-content"></textarea>
 				</div>
 				<div>
-					<input type="hidden" name="id" id="modal-id">
+<!-- 					<input type="hidden" name="id" id="modal-id"> -->
 					<input type="button" id="btnModify" value="수정">
 					<input type="button" id="btnDelete" value="삭제">
 					<input type="button" id="btnClose" value="닫기">
 				</div>
 			</form>
 		</div>		
+		
 	</div>
 </body>
 </html>

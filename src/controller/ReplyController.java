@@ -18,30 +18,30 @@ import service.ReplyService;
 public class ReplyController {
 	@Autowired
 	ReplyService replyService;
-	
+
 	@ResponseBody
-	@RequestMapping(value="/all/{boardNum}", method=RequestMethod.GET)
-	public List<Reply> ReplyList(Model model, @PathVariable("boardNum")int boardNum) {
-		List<Reply> replyList = replyService.getRepliesByBNum(boardNum);
+	@RequestMapping(value = "/all/{bNum}", method = RequestMethod.GET)
+	public List<Reply> ReplyList(Model model, @PathVariable("bNum") int bNum) {
+		List<Reply> replyList = replyService.getRepliesByBNum(bNum);
 		return replyList;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/write", method=RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public boolean write(Reply reply) {
 		boolean result = replyService.writeReply(reply);
 		return result;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public boolean modify(Reply reply) {
 		boolean result = replyService.modifyReply(reply);
 		return result;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public boolean delete(Reply reply) {
 		boolean result = replyService.removeReply(reply);
 		return result;

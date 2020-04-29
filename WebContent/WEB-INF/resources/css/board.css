@@ -156,6 +156,10 @@
 	padding: 1px;
 }
 
+#replyModifyForm {
+	display: none;
+}	
+
 /* boardWrite.jsp */
 #boardInner #write {
 	margin: auto;
