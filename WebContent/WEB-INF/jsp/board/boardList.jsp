@@ -15,6 +15,12 @@
 			<ul>
 				<li>
 					<div><a id="writeButton" href="write">글쓰기</a></div>
+					<div>
+						<form action="${contextPath}/member/signOut" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+							<input type="submit" value="로그아웃">
+						</form>
+					</div>
 				</li>
 				<li id="listHead">
 					<div>번호</div>

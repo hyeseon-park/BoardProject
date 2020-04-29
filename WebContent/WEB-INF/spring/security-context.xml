@@ -23,8 +23,8 @@
 							 username-parameter="mID"
 							 password-parameter="mPass"/>
 		<security:logout delete-cookies="JSESSIONID"
-						 logout-success-url="/member/signIn"
 						 logout-url="/member/signOut"
+						 logout-success-url="/member/signIn"
 						 invalidate-session="true"/>
 						 
 	</security:http>
