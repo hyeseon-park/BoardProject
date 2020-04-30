@@ -43,6 +43,10 @@ $(function() {
 		})
 		return false;
 	});	
+	
+	$("#btnClose").on("click", function() {
+		$("#replyModifyForm").hide("slow");
+	});		
 })
 
 function getOriginFileName(fName) {
