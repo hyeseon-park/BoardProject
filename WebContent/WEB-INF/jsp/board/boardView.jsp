@@ -174,15 +174,15 @@ function createReplyList() {
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 				<div>
 					<span>이름</span>
-					<input type="text" name="rName" id="r_name">
+					<input type="text" name="rName" id="rName">
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="rPass" id="r_pass">
+					<input type="password" name="rPass" id="rPass">
 				</div>
 				<div>
 					<span>내용</span>
-					<textarea rows="3" cols="30" name="rContent" id="r_content"></textarea>
+					<textarea rows="3" cols="30" name="rContent" id="rContent"></textarea>
 				</div>
 				<div>
 					<input type="hidden" name="bNum" value="${board.num}">
