@@ -70,6 +70,26 @@ $(function() {
 		});
 	});
 	
+	$("#btnDelete").on("click", function() {
+		var d = $("#replyFormModal").serialize();
+		$.ajax({
+			url : "../reply/delete",
+			data : d,
+			type : "post",
+			dataType : "json",
+			success: function(result) {
+				if(result) {
+					alert("삭제 완료");
+				} else {
+					alert("삭제 실패");
+				}
+				createReplyList();
+			},
+			error: function(request, status, error) {
+				alert("request:"+request+" status:"+status+" error:"+error);
+			}
+		});
+	});
 	
 })
 
@@ -82,9 +102,8 @@ function getOriginFileName(fName) {
 }
 
 function createReplyList() {
-	console.log("createReplyList");
 	
-	$("#replies tr:gt(0)").remove();
+	$("#replies div:gt(0)").remove();
 	var repliesDiv = $("#replies");
 	var bNum = ${board.num};
 	
@@ -147,11 +166,6 @@ function createReplyList() {
 		
 		<%-- 댓글 보기 --%>
 		<div id="replies">
-			<ul>
-				<li>이름</li>
-				<li>내용</li>
-				<li>편집</li>
-			</ul>
 		</div>
 		
 		<%-- 댓글 입력 --%>
