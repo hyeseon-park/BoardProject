@@ -3,8 +3,11 @@
 <mapper namespace="dao.BoardDao">
 
 	<insert id="insertBoard" parameterType="map">
+		<selectKey order="BEFORE" keyProperty="num" resultType="int">
+			select board_seq.nextval from dual
+		</selectKey>
 		insert into board (num, title, content, pass, name, fName)
-		values (board_seq.nextval, #{title}, #{content}, #{pass}, #{name}, #{fName})
+		values (#{num}, #{title}, #{content}, #{pass}, #{name}, #{fName})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
