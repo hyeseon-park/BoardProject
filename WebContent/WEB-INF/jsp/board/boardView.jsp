@@ -24,9 +24,9 @@ $(function() {
 	$("#replyForm").on("submit", function() {
 		var d = $(this).serialize();
 		$.ajax({
-			url: "../reply/write",
-			data: d, 
-			type: "post",
+			url : "../reply/write",
+			data : d, 
+			type : "post",
 			dataType : "json",
 			success : function(data) {
 				if(data) {
@@ -37,7 +37,7 @@ $(function() {
 				}
 				createReplyList();
 			},
-			error: function(request, status, error) {
+			error : function(request, status, error) {
 				alert("request:"+request+" status:"+status+" error:"+error);
 			}
 		})
@@ -46,7 +46,31 @@ $(function() {
 	
 	$("#btnClose").on("click", function() {
 		$("#replyModifyForm").hide("slow");
-	});		
+	});	
+	
+	$("#btnModify").on("click", function() {
+		var d = $("#replyFormModal").serialize();
+		$.ajax({
+			url : "../reply/modify",
+			data : d,
+			type : "post",
+			dataType : "json",
+			success : function(result) {
+				if(result) {
+					alert("수정 완료");
+				} else {
+					alert("수정 실패");
+				}
+				createReplyList();
+				$("#replyModifyForm").hide("slow");
+			},
+			error: function(request, status, error) {
+				alert("request:"+request+" status:"+status+" error:"+error);
+			}
+		});
+	});
+	
+	
 })
 
 function getOriginFileName(fName) {
@@ -65,13 +89,14 @@ function createReplyList() {
 	var bNum = ${board.num};
 	
 	$.ajax({
-		url:"${contextPath}/reply/all/"+bNum,
-		type:"get",
-		dataType:"json",
-		success: function(replyList) {
+		url : "${contextPath}/reply/all/"+bNum,
+		type : "get",
+		dataType : "json",
+		success : function(replyList) {
 			for(var i in replyList) {
 				var div = $("<div>");
 				var button = $("<button>편집</button>");
+				
 				div.append($("<div>").text(replyList[i].rName));
 				div.append($("<div>").text(replyList[i].rContent));
 				div.append($("<div>").append(button));
@@ -80,9 +105,10 @@ function createReplyList() {
 				(function(j) {
 					button.on("click", function() {
 						$("#replyModifyForm").show("slow");
-						$("#modal-name").val(replyList[j].rName);
-						$("#modal-pass").val(replyList[j].rPass);
-						$("#modal-content").val(replyList[j].rContent);
+						$("#modal-rName").val(replyList[j].rName);
+						$("#modal-rPass").val(replyList[j].rPass);
+						$("#modal-rContent").val(replyList[j].rContent);
+						$("#modal-rNum").val(replyList[j].rNum);
 					});
 				})(i)
 			}
@@ -154,20 +180,21 @@ function createReplyList() {
 		<%-- 모달 창 --%>
 		<div id="replyModifyForm">
 			<form id="replyFormModal">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div>
 					<span>이름</span>
-					<input type="text" name="rName" id="modal-name">
+					<input type="text" name="rName" id="modal-rName">
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="rPass" id="modal-pass">
+					<input type="password" name="rPass" id="modal-rPass">
 				</div>
 				<div>
 					<span>내용</span>
-					<textarea rows="3" cols="30" name="rContent" id="modal-content"></textarea>
+					<textarea rows="3" cols="30" name="rContent" id="modal-rContent"></textarea>
 				</div>
 				<div>
-<!-- 					<input type="hidden" name="id" id="modal-id"> -->
+					<input type="hidden" name="rNum" id="modal-rNum">
 					<input type="button" id="btnModify" value="수정">
 					<input type="button" id="btnDelete" value="삭제">
 					<input type="button" id="btnClose" value="닫기">
