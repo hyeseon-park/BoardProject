@@ -22,8 +22,18 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 
+	@RequestMapping("/list")
+	public String list(Model model, @RequestParam(defaultValue = "0", value = "type") int type, @RequestParam(required = false, value = "keyword") String keyword) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		Map<String, Object> result = boardService.getSearchedBoards(param);
+		model.addAllAttributes(result);
+		return "board/boardList";
+	}
+	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(Board board, Model model, MultipartFile file) {
+	public String write(Board board, Model model, @RequestParam(value = "file")MultipartFile file) {
 		boolean result = boardService.writeBoard(board, file);
 		String msg = "";
 		String url = "";
@@ -109,16 +119,6 @@ public class BoardController {
 	public String view(Model model, int num) {
 		model.addAttribute("board", boardService.getBoard(num));
 		return "board/boardView";
-	}
-
-	@RequestMapping("/list")
-	public String list(Model model, @RequestParam(defaultValue = "0") int type, @RequestParam(required = false) String keyword) {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("type", type);
-		param.put("keyword", keyword);
-		Map<String, Object> result = boardService.getSearchedBoards(param);
-		model.addAllAttributes(result);
-		return "board/boardList";
 	}
 
 	@RequestMapping("/download")
