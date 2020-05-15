@@ -8,35 +8,30 @@
 <meta charset="UTF-8">
 <title>boardList</title>
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/css/reset.css"/>
 </head>
 <body>
-	<div id="boardInner">
-		<div id="list">
-			<ul>
-				<li>
-					<div><a id="writeButton" href="write">글쓰기</a></div>
-					<div>
-						<form action="${contextPath}/member/signOut" method="post">
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-							<input type="submit" value="로그아웃">
-						</form>
-					</div>
-				</li>
-				<li id="listHead">
-					<div>번호</div>
-					<div>제목</div>
-					<div>작성자</div>
-				</li>
-				<c:forEach items="${boardList}" var="board">
-					<li>
-						<div>${board.num}</div>
-						<div><a href="view?num=${board.num}">${board.title}</a></div>
-						<div>${board.name}</div>
-					</li>
-				</c:forEach>
-			</ul>
+	<div class="boardInner">
+		<div>
+			<div class="board_write_btn" onclick="location.href='${contextPath}/board/write'">글쓰기</div>
 		</div>
-		<div id="listSearch">
+		<div>
+			<form action="${contextPath}/member/signOut" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="submit" value="로그아웃">
+			</form>
+		</div>
+		
+		<div class="board_list">
+			<c:forEach items="${boardList}" var="board">
+				<div class="board_list_body">
+					<div><a href="view?num=${board.num}">${board.title}</a></div>
+					<div>${board.name}</div>
+				</div>
+			</c:forEach>
+		</div>
+		
+		<div class="board_list_search">
 			<form action="list">
 				<select name="type">
 					<option value="1">제목</option>

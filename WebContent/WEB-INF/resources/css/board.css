@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
 /* board 공통 */
-#boardInner {
+.body {
+	background-color: #a6b1e1;
+}
+
+.boardInner {
 	position: relative;
 	width: 100%;
 	max-width: 1280px;
@@ -9,75 +13,60 @@
 }
 
 /* boardList.jsp */
-#boardInner #list {
+.board_list {
 	margin: auto;
 	margin-top: 10%;
 	padding: 10px;
 	width: 700px;
 }
 
-#boardInner #listSearch {
+.board_list_body {
+	border: 1px solid #a6b1e1;
+    height: 150px;
+    width: 200px;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.board_list_body:hover {
+	background-color: #edefff;
+}
+
+.board_list_body div {
+}
+
+.board_list_search {
+	text-align: center;
 	margin: auto;
 	margin-bottom: 10%;
 	padding: 10px;
 	width: 700px;
 }
 
-#boardInner #list ul {
+.board_list_head div {
 	margin-bottom: 15px;
 	padding-left: 0px;
 }
 
-#boardInner #list ul li {
+.board_list_head div div {
 	line-height: 30px;
 	padding: 5px 0;
 	border-bottom: 1px solid #edefff;
 }
 
-#boardInner #list ul div {
-	height: 100%;
-	float: left;
-	text-align: center;
-	padding: 0 5px;
-}
-
-#boardInner #list ul #listHead {
-	background-color: #a6b1e1;
-	border-top: 1px solid #edefff;
-}
-
-#boardInner #list ul #listHead>div {
-	text-align: center;
-}
-
-#boardInner #list ul div:nth-child(1) {
-	width: 100px;
-}
-
-#boardInner #list ul div:nth-child(2) {
-	width: calc(100% - 250px);
-	text-align: left;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-#boardInner #list ul div:nth-child(3) {
-	width: 50px;
-}
-
-#boardInner #writeButton {
-	border: 0px solid;
+.board_write_btn {
 	border-radius: 4px;
 	background-color: #a6b1e1;
 	color: #424874;
 	cursor: pointer;
 	padding: 5px;
-	width: 30%;
-	height: 35px;
+	width: 50px;
+    height: 20px;
 }
 
-#boardInner #writeButton:hover {
+.board_write_btn:hover {
 	background-color: #f4eeff;
 }
 
