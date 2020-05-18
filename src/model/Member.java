@@ -3,7 +3,7 @@ package model;
 public class Member {
 	private int mNum;
 	private String mID;
-	private String mPass;
+	private String mPW;
 	private String mName;
 	
 	public int getmNum() {
@@ -18,11 +18,11 @@ public class Member {
 	public void setmID(String mID) {
 		this.mID = mID;
 	}
-	public String getmPass() {
-		return mPass;
+	public String getmPW() {
+		return mPW;
 	}
-	public void setmPass(String mPass) {
-		this.mPass = mPass;
+	public void setmPw(String mPW) {
+		this.mPW = mPW;
 	}
 	public String getmName() {
 		return mName;
@@ -32,6 +32,6 @@ public class Member {
 	}
 	@Override
 	public String toString() {
-		return "Member [mNum=" + mNum + ", mID=" + mID + ", mPass=" + mPass + ", mName=" + mName + "]";
+		return "Member [mNum=" + mNum + ", mID=" + mID + ", mPW=" + mPW + ", mName=" + mName + "]";
 	}
 }

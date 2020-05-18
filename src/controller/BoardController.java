@@ -100,7 +100,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
 	public String check(int num, String password, String type) {
-		if (password.equals(boardService.getBoard(num).getPass())) {
+		if (password.equals(boardService.getBoard(num).getbPW())) {
 			if (type.equals("modify")) {
 				return "redirect:modify?num=" + num;
 			} else if (type.equals("delete")) {

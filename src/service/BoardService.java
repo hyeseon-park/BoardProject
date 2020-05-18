@@ -29,10 +29,10 @@ public class BoardService {
 		} else {
 			String changedName = writeFile(file);
 			Map<String, Object> fileParam = new HashMap<String, Object>();
-			fileParam.put("title", board.getTitle());
-			fileParam.put("content", board.getContent());
-			fileParam.put("pass", board.getPass());
-			fileParam.put("name", board.getName());
+			fileParam.put("bTitle", board.getbTitle());
+			fileParam.put("bContent", board.getbContent());
+			fileParam.put("bPW", board.getbPW());
+			fileParam.put("bName", board.getbName());
 			fileParam.put("fName", changedName);
 			if (boardDao.insertBoard(fileParam) > 0) {
 				return true;
@@ -63,7 +63,7 @@ public class BoardService {
 	}
 
 	public boolean removeBoard(Board board) {
-		if (boardDao.deleteBoard(board.getNum()) > 0) {
+		if (boardDao.deleteBoard(board.getbNum()) > 0) {
 			return true;
 		}
 		return false;

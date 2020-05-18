@@ -3,7 +3,7 @@ package model;
 public class Reply {
 	private int rNum;
 	private String rName;
-	private String rPass;
+	private String rPW;
 	private String rContent;
 	private int bNum;
 	
@@ -19,11 +19,11 @@ public class Reply {
 	public void setrName(String rName) {
 		this.rName = rName;
 	}
-	public String getrPass() {
-		return rPass;
+	public String getrPW() {
+		return rPW;
 	}
-	public void setrPass(String rPass) {
-		this.rPass = rPass;
+	public void setrPW(String rPW) {
+		this.rPW = rPW;
 	}
 	public String getrContent() {
 		return rContent;
@@ -39,7 +39,7 @@ public class Reply {
 	}
 	@Override
 	public String toString() {
-		return "Reply [rNum=" + rNum + ", rName=" + rName + ", rPass=" + rPass + ", rContent=" + rContent + ", bNum="
+		return "Reply [rNum=" + rNum + ", rName=" + rName + ", rPW=" + rPW + ", rContent=" + rContent + ", bNum="
 				+ bNum + "]";
 	}
 }

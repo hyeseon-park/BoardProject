@@ -1,42 +1,42 @@
 package model;
 
 public class Board {
-	private int num;
-	private String title;
-	private String content;
-	private String pass;
-	private String name;
+	private int bNum;
+	private String bTitle;
+	private String bContent;
+	private String bPW;
+	private String bName;
 	private String fName;
 	
-	public int getNum() {
-		return num;
+	public int getbNum() {
+		return bNum;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setbNum(int bNum) {
+		this.bNum = bNum;
 	}
-	public String getTitle() {
-		return title;
+	public String getbTitle() {
+		return bTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
 	}
-	public String getContent() {
-		return content;
+	public String getbContent() {
+		return bContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
 	}
-	public String getPass() {
-		return pass;
+	public String getbPW() {
+		return bPW;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setbPW(String bPW) {
+		this.bPW = bPW;
 	}
-	public String getName() {
-		return name;
+	public String getbName() {
+		return bName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setbName(String bName) {
+		this.bName = bName;
 	}
 	public String getfName() {
 		return fName;
@@ -46,7 +46,8 @@ public class Board {
 	}
 	@Override
 	public String toString() {
-		return "Board [num=" + num + ", title=" + title + ", content=" + content + ", pass=" + pass + ", name=" + name
-				+ ", fName=" + fName + "]";
+		return "Board [bNum=" + bNum + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bPW=" + bPW + ", bName="
+				+ bName + ", fName=" + fName + "]";
 	}
+	
 }
