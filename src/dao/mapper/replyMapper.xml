@@ -3,34 +3,39 @@
 <mapper namespace="dao.ReplyDao">
 
 	<insert id="insertReply" parameterType="reply">
-		<selectKey order="BEFORE" keyProperty="rNum" resultType="int">
-			select reply_seq.nextval from dual
-		</selectKey>
-		insert into reply (rNum, rName, rPass, rContent, bNum)
-		values (#{rNum}, #{rName}, #{rPass}, #{rContent}, #{bNum})
+		insert into reply 
+		(r_num, r_name, r_pw, r_content, b_num)
+		values (#{rNum}, #{rName}, #{rPW}, #{rContent}, #{bNum})
 	</insert>
 	
 	<update id="updateReply" parameterType="reply">
 		update reply
-		set rName=#{rName}, rPass=#{rPass}, rContent=#{rContent}
-		where rNum=#{rNum}
+		set r_name=#{rName}, r_pw=#{rPW}, r_content=#{rContent}
+		where r_num=#{rNum}
 	</update>
 	
 	<delete id="deleteReply" parameterType="int">
 		delete from reply
-		where rNum=#{rNum}
+		where r_num=#{rNum}
 	</delete>
 	
 	<select id="selectReplyByRNum" parameterType="int" resultType="reply">
 		select * 
 		from reply
-		where rNum=#{rNum} 
+		where r_num=#{rNum} 
 	</select>
 	
 	<select id="selectRepliesByBNum" parameterType="int" resultType="reply">
 		select * 
 		from reply
-		where bNum=#{bNum} 
+		where r_num=#{bNum} 
 	</select>
 	
+	<resultMap type="reply" id="replyMap">
+		<result column="r_num" property="rNum"/>
+		<result column="r_name" property="rName"/>
+		<result column="r_pw" property="rPW"/>
+		<result column="r_content" property="rContent"/>
+		<result column="b_num" property="bNum"/>
+	</resultMap>
 </mapper>

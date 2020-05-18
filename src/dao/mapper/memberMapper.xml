@@ -3,33 +3,39 @@
 <mapper namespace="dao.MemberDao">
 
 	<insert id="insertMember" parameterType="member">
-		<selectKey order="BEFORE" keyProperty="mNum" resultType="int">
-			select member_seq.nextval from dual
-		</selectKey>
-		insert into member (mNum, mID, mPass, mName)
-		values (#{mNum}, #{mID}, #{mPass}, #{mName})
+		insert into member 
+		(m_num, m_id, m_pw, m_name)
+		values (#{mNum}, #{mID}, #{mPW}, #{mName})
 	</insert>
 	
-	<select id="selectMember" parameterType="int" resultType="member">
+	<select id="selectMember" parameterType="int" resultMap="memberMap">
 		select * 
 		from member
-		where mNum=#{mNum}
+		where m_num=#{mNum}
 	</select>
 
-	<select id="selectMemberByMID" parameterType="String" resultType="member">
+	<select id="selectMemberByMID" parameterType="String" resultMap="memberMap">
 		select * 
 		from member
-		where mID=#{mID}
+		where m_id=#{mID}
 	</select>	
 	
 	<insert id="insertAuthority" parameterType="member">
-		insert into authority (mNum, authority)
+		insert into authority 
+		(m_num, authority)
 		values (#{mNum}, 'ROLE_USER')
 	</insert>
 
-	<select id="selectAuthoritiesByMNum" parameterType="int" resultType="String">
+	<select id="selectAuthoritiesByMNum" parameterType="int" resultMap="memberMap">
 		select authority
 		from authority
-		where mNum=#{mNum}
+		where m_Num=#{mNum}
 	</select>	
+	
+	<resultMap type="member" id="memberMap">
+		<result column="m_num" property="mNum"/>
+		<result column="m_id" property="mID"/>
+		<result column="m_pw" property="mPW"/>
+		<result column="m_name" property="mName"/>
+	</resultMap>
 </mapper>

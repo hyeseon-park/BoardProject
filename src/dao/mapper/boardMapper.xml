@@ -3,28 +3,26 @@
 <mapper namespace="dao.BoardDao">
 
 	<insert id="insertBoard" parameterType="map">
-		<selectKey order="BEFORE" keyProperty="num" resultType="int">
-			select board_seq.nextval from dual
-		</selectKey>
-		insert into board (num, title, content, pass, name, fName)
-		values (#{num}, #{title}, #{content}, #{pass}, #{name}, #{fName})
+		insert into board 
+		(b_num, b_title, b_content, b_pw, b_name, f_name)
+		values (#{bNum}, #{bTitle}, #{bContent}, #{bPW}, #{bName}, #{fName})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
 		update board
-		set title=#{title}, content=#{content}, pass=#{pass}, name=#{name}
-		where num=#{num}
+		set b_title=#{bTitle}, b_content=#{bContent}, b_pw=#{bPW}, b_name=#{bName}
+		where b_num=#{bNum}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
 		delete from board
-		where num=#{num}
+		where b_num=#{bNum}
 	</delete>
 	
 	<select id="selectBoard" parameterType="int" resultType="board">
 		select * 
-		from board b
-		where b.num=#{num} 
+		from board
+		where b_num=#{bNum} 
 	</select>
 	
 	<select id="selectAllBoards" resultType="board">
@@ -32,22 +30,22 @@
 	</select>
 	
 	<select id="selectSearchedBoards" parameterType="map" resultType="board">
-		select num, title, name 
+		select b_num, b_title, b_name 
 		from board
 		where 1=0
 		<if test="title != null">
-			or title like ('%${title}%')
+			or b_title like ('%${bTitle}%')
 		</if>
 		<if test="content != null">
-			or content like ('%${content}%')
+			or b_content like ('%${bContent}%')
 		</if>
 		<if test="name != null">
-			or name like ('%${name}%')
+			or b_name like ('%${bName}%')
 		</if>
 		<if test="type == 0">
 			or 1=1
 		</if>
-			order by num desc
+			order by b_num desc
 	</select>
 	
 </mapper>
