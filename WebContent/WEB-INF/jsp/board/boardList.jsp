@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<%@ include file="/WEB-INF/jsp/inc/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +10,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/reset.css"/>
 </head>
 <body>
-	<div class="boardInner">
-		<div>
-			<div class="board_write_btn" onclick="location.href='${contextPath}/board/write'">글쓰기</div>
-		</div>
+	<div class="board_inner">
 		<div>
 			<form action="${contextPath}/member/signOut" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -22,11 +18,13 @@
 			</form>
 		</div>
 		
-		<div class="board_list">
+		<div class="list_inner">
+			<div class="board_write_btn" onclick="location.href='${contextPath}/board/write'">글쓰기</div>
+			
 			<c:forEach items="${boardList}" var="board">
-				<div class="board_list_body">
-					<div><a href="view?num=${board.num}">${board.title}</a></div>
-					<div>${board.name}</div>
+				<div class="board_list_box">
+					<div><a href="view?bNum=${board.bNum}">${board.bTitle}</a></div>
+					<div>${board.bName}</div>
 				</div>
 			</c:forEach>
 		</div>

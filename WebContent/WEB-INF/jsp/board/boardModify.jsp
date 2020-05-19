@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<%@ include file="/WEB-INF/jsp/inc/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,33 +9,28 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
 </head>
 <body>
-	<div id="boardInner">
+	<div class="board_inner">
 		<form action="modify" method="post" id="modifyForm">
-			<div id="modify">
+			<div class="modify_inner">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-				<div class="row">
-					<label>
-						<span>번호</span>
-						<input type="text" name="num" readonly="readonly" value="${board.num}">
-					</label>
-				</div>
+				<input type="hidden" name="bNum" value="${board.bNum}">
+				<input type="hidden" name="bPW" value="${board.bPW}">
 				<div>
 					<label>	
 						<span>제목</span>
-						<input type="text" name="title" value="${board.title}">
-						<input type="hidden" name="pass" value="${board.pass}">
+						<input type="text" name="bTitle" value="${board.bTitle}">
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>이름</span>
-						<input type="text" name="name" value="${board.name}">
+						<input type="text" name="bName" value="${board.bName}">
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>내용</span>
-						<textarea rows="10" cols="54" name="content">${board.content}</textarea>
+						<textarea rows="10" cols="54" name="bContent">${board.bContent}</textarea>
 					</label>
 				</div>
 				<input type="submit" value="수정 완료">

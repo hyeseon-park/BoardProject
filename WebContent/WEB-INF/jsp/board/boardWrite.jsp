@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<%@ include file="/WEB-INF/jsp/inc/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,26 +9,26 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/css/board.css"/>
 </head>
 <body>
-	<div id="boardInner">
+	<div class="board_inner">
 		<form action="write" method="post" id="writeForm" enctype="multipart/form-data">
-			<div id="write">
+			<div class="write_inner">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<div class="row">
 					<label>
 						<span>제목</span>
-						<input type="text" name="title">
+						<input type="text" name="bTitle">
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>이름</span>
-						<input type="text" name="name">
+						<input type="text" name="bName">
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>비밀번호</span>
-						<input type="password" name="pass">
+						<input type="password" name="bPW">
 					</label>
 				</div>
 				<div>
@@ -41,7 +40,7 @@
 				<div>
 					<label>
 						<span>내용</span>
-						<textarea rows="20" cols="80" name="content"></textarea>
+						<textarea rows="20" cols="80" name="bContent"></textarea>
 					</label>
 				</div>
 				<input type="submit" value="등록">

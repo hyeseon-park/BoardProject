@@ -99,7 +99,7 @@ function createReplyList() {
 	
 	$("#replies div:gt(0)").remove();
 	var repliesDiv = $("#replies");
-	var bNum = ${board.num};
+	var bNum = ${board.bNum};
 	
 	$.ajax({
 		url : "${contextPath}/reply/all/"+bNum,
@@ -135,26 +135,27 @@ function createReplyList() {
 </script>
 </head>
 <body>
-	<div id="boardInner">
-		<div id="detail">
-			<button onclick="location.href='check?num=${board.num}&type=modify'">수정</button>
-			<button onclick="location.href='check?num=${board.num}&type=delete'">삭제</button>
+	<div class="board_inner">
+		<div class="view_inner">
+			<button onclick="location.href='check?bNum=${board.bNum}&type=modify'">수정</button>
+			<button onclick="location.href='check?bNum=${board.bNum}&type=delete'">삭제</button>
 			<button onclick="location.href='list'">목록</button>
 			<button onclick="location.href='write'">새글쓰기</button>
-			<div class="row">
+			
+			<div>
 				<span>제목</span>
-				<span class="bold">${board.title}</span>
+				<span class="bold">${board.bTitle}</span>
 			</div>
-			<div class="row">
+			<div>
 				<span>작성자</span>
-				<span class="bold">${board.name}</span>
+				<span class="bold">${board.bName}</span>
 			</div>
 			<div>
 				<span>첨부파일</span>
-				<a href="download?num=${board.num}" id="attachFile"></a>
+				<a href="download?num=${board.bNum}" id="attachFile"></a>
 			</div>
-			<div id="content">
-				<span class="bold">${board.content}</span>
+			<div class="content">
+				<span class="bold">${board.bContent}</span>
 			</div>
 		</div>
 		
@@ -172,14 +173,14 @@ function createReplyList() {
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="rPass" id="rPass">
+					<input type="password" name="rPW" id="rPW">
 				</div>
 				<div>
 					<span>내용</span>
 					<textarea rows="3" cols="30" name="rContent" id="rContent"></textarea>
 				</div>
 				<div>
-					<input type="hidden" name="bNum" value="${board.num}">
+					<input type="hidden" name="bNum" value="${board.bNum}">
 					<input type="submit" value="작성">
 				</div>
 			</form>
@@ -191,18 +192,18 @@ function createReplyList() {
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div>
 					<span>이름</span>
-					<input type="text" name="rName" id="modal-rName">
+					<input type="text" name="rName" id="modal_rName">
 				</div>
 				<div>
 					<span>비밀번호</span>
-					<input type="password" name="rPass" id="modal-rPass">
+					<input type="password" name="rPW" id="modal_rPW">
 				</div>
 				<div>
 					<span>내용</span>
-					<textarea rows="3" cols="30" name="rContent" id="modal-rContent"></textarea>
+					<textarea rows="3" cols="30" name="rContent" id="modal_rContent"></textarea>
 				</div>
 				<div>
-					<input type="hidden" name="rNum" id="modal-rNum">
+					<input type="hidden" name="rNum" id="modal_rNum">
 					<input type="button" id="btnModify" value="수정">
 					<input type="button" id="btnDelete" value="삭제">
 					<input type="button" id="btnClose" value="닫기">
