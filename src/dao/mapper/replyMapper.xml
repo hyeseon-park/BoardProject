@@ -4,8 +4,11 @@
 
 	<insert id="insertReply" parameterType="reply">
 		insert into tbl_reply 
-		(r_num, r_name, r_pw, r_content, b_num)
-		values (#{rNum}, #{rName}, #{rPW}, #{rContent}, #{bNum})
+		(r_name, r_pw, r_content, b_num)
+		values (#{rName}, #{rPW}, #{rContent}, #{bNum})
+		<selectKey order="AFTER" keyProperty="rNum" resultType="int">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<update id="updateReply" parameterType="reply">

@@ -4,8 +4,11 @@
 
 	<insert id="insertBoard" parameterType="map">
 		insert into tbl_board 
-		(b_num, b_title, b_content, b_pw, b_name, f_name)
-		values (#{bNum}, #{bTitle}, #{bContent}, #{bPW}, #{bName}, #{fName})
+		(b_title, b_content, b_pw, b_name, f_name)
+		values (#{bTitle}, #{bContent}, #{bPW}, #{bName}, #{fName})
+		<selectKey order="AFTER" keyProperty="bNum" resultType="int">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">

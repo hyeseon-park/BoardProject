@@ -4,8 +4,11 @@
 
 	<insert id="insertMember" parameterType="member">
 		insert into tbl_member 
-		(m_num, m_id, m_pw, m_name)
-		values (#{mNum}, #{mID}, #{mPW}, #{mName})
+		(m_id, m_pw, m_name)
+		values (#{mID}, #{mPW}, #{mName})
+		<selectKey order="AFTER" keyProperty="mNum" resultType="int">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<select id="selectMember" parameterType="int" resultMap="memberMap">
@@ -26,10 +29,10 @@
 		values (#{mNum}, 'ROLE_USER')
 	</insert>
 
-	<select id="selectAuthoritiesByMNum" parameterType="int" resultMap="memberMap">
+	<select id="selectAuthoritiesByMNum" parameterType="int" resultType="String">
 		select authority
 		from authority
-		where m_Num=#{mNum}
+		where m_num=#{mNum}
 	</select>	
 	
 	<resultMap type="member" id="memberMap">
