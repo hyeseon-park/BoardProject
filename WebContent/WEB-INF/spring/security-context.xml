@@ -11,19 +11,19 @@
 	
 	<security:http auto-config="true" use-expressions="true">
 	
+		<security:intercept-url pattern="/member/*" 
+								access="permitAll"/>	
 		<security:intercept-url pattern="/board/*" 
 								access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/reply/*" 
 								access="hasRole('ROLE_USER')"/>
-		<security:intercept-url pattern="/member/*" 
-								access="permitAll"/>
 		<security:access-denied-handler error-page="/member/signIn?signIn=false"/>
 		<security:form-login login-page="/member/signIn" 
 							 login-processing-url="/member/signIn"
 							 authentication-failure-url="/member/signIn?signIn=fail"
 							 default-target-url="/board/list"
 							 username-parameter="mID"
-							 password-parameter="mPass"/>
+							 password-parameter="mPW"/>
 		<security:logout delete-cookies="JSESSIONID"
 						 logout-url="/member/signOut"
 						 logout-success-url="/member/signIn"
