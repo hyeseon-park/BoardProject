@@ -33,7 +33,7 @@ public class MemberController {
 		return "member/signUpForm";
 	}
 
-	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
+	@RequestMapping(value = "/signIn", method = { RequestMethod.GET, RequestMethod.POST })
 	public String showSignIn() {
 		return "member/signInForm";
 	}

@@ -12,7 +12,7 @@ import common.Role;
 public class MemberDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private String mID;
-	private String mPass;
+	private String mPW;
 	private List<Role> authorities;
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
@@ -41,7 +41,7 @@ public class MemberDetails implements UserDetails {
 	}
 	
 	public String getPassword() {
-		return mPass;
+		return mPW;
 	}
 
 	public boolean isAccountNonExpired() {
@@ -68,12 +68,12 @@ public class MemberDetails implements UserDetails {
 		this.mID = mID;
 	}
 
-	public String getmPass() {
-		return mPass;
+	public String getmPW() {
+		return mPW;
 	}
 
-	public void setmPass(String mPass) {
-		this.mPass = mPass;
+	public void setmPW(String mPW) {
+		this.mPW = mPW;
 	}
 
 	public void setAuthorities(List<Role> authorities) {

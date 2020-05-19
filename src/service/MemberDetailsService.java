@@ -21,14 +21,15 @@ public class MemberDetailsService implements UserDetailsService {
 		Member originalMember = memberService.getMemberByMID(mID);
 		String mPW = originalMember.getmPW();
 		int mNum = originalMember.getmNum();
-		List<String> authList = memberService.getAuthoritiesByMNum(mNum);
+		
 		MemberDetails member = new MemberDetails();
 		member.setmID(mID);
-		member.setmPass(mPW);
+		member.setmPW(mPW);
+		
+		List<String> authList = memberService.getAuthoritiesByMNum(mNum);
 		for (String auth : authList) {
 			member.addAuth(auth);
 		}
 		return member;
 	}
-
 }

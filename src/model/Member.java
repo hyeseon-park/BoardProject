@@ -21,7 +21,7 @@ public class Member {
 	public String getmPW() {
 		return mPW;
 	}
-	public void setmPw(String mPW) {
+	public void setmPW(String mPW) {
 		this.mPW = mPW;
 	}
 	public String getmName() {
