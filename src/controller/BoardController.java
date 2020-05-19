@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
 import model.Board;
@@ -55,9 +54,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public ModelAndView modify(Board board) {
+	public String modify(Model model, Board board) {
 		boolean result = boardService.modifyBoard(board);
-		ModelAndView mav = new ModelAndView();
 		String msg = "";
 		String url = "";
 		if (result) {
@@ -67,22 +65,20 @@ public class BoardController {
 			msg = "수정 실패했습니다.";
 			url = "list";
 		}
-		mav.setViewName("board/boardResult");
-		mav.addObject("url", url);
-		mav.addObject("msg", msg);
-		return mav;
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		return "board/boardResult";
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String showModify(Model model, int num) {
-		model.addAttribute("board", boardService.getBoard(num));
+	public String showModify(Model model, int bNum) {
+		model.addAttribute("board", boardService.getBoard(bNum));
 		return "board/boardModify";
 	}
 
 	@RequestMapping("/delete")
-	public ModelAndView delete(Board board) {
-		boolean result = boardService.removeBoard(board);
-		ModelAndView mav = new ModelAndView();
+	public String delete(Model model, int bNum) {
+		boolean result = boardService.removeBoard(bNum);
 		String msg = "";
 		String url = "";
 		if (result) {
@@ -92,19 +88,18 @@ public class BoardController {
 			msg = "삭제 실패했습니다.";
 			url = "list";
 		}
-		mav.setViewName("board/boardResult");
-		mav.addObject("url", url);
-		mav.addObject("msg", msg);
-		return mav;
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		return "board/boardResult";
 	}
 
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public String check(int num, String password, String type) {
-		if (password.equals(boardService.getBoard(num).getbPW())) {
+	public String check(int bNum, String password, String type) {
+		if (password.equals(boardService.getBoard(bNum).getbPW())) {
 			if (type.equals("modify")) {
-				return "redirect:modify?num=" + num;
+				return "redirect:modify?bNum=" + bNum;
 			} else if (type.equals("delete")) {
-				return "redirect:delete?num=" + num;
+				return "redirect:delete?bNum=" + bNum;
 			}
 		}
 		return "board/boardCheck";
@@ -116,8 +111,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("/view")
-	public String view(Model model, int num) {
-		model.addAttribute("board", boardService.getBoard(num));
+	public String view(Model model, int bNum) {
+		model.addAttribute("board", boardService.getBoard(bNum));
 		return "board/boardView";
 	}
 
