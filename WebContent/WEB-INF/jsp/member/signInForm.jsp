@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<%@ include file="/WEB-INF/jsp/inc/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,7 @@
 				<h3>아이디</h3>
 				<input type="text" name="mID">
 				<h3>비밀번호</h3>
-				<input type="password" name="mPass">
+				<input type="password" name="mPW">
 			</div>
 			<div class="signin_sentence">
 				<c:if test='${param.signIn eq "false"}'>
@@ -33,7 +32,6 @@
 				<input type="button" value="가입" onclick="location.href='signUp'"><br>
 			</div>
 		</form>
-		
 	</div>
 </body>
 </html>
