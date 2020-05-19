@@ -1,27 +1,29 @@
 @charset "UTF-8";
 
 /* board 공통 */
-.body {
-	background-color: #a6b1e1;
+body {
+	background: linear-gradient(45deg, #FFF0E9 20%, #EDCEDB 50%, #967CAA 100%);
 }
 
-.boardInner {
+.board_inner {
 	position: relative;
 	width: 100%;
-	max-width: 1280px;
-	margin: 30px auto 30px;
+	height: 100%;
+	margin: 0px auto;
 }
 
 /* boardList.jsp */
-.board_list {
+.list_inner {
 	margin: auto;
 	margin-top: 10%;
 	padding: 10px;
 	width: 700px;
+	text-align: center;
 }
 
-.board_list_body {
-	border: 1px solid #a6b1e1;
+.board_list_box {
+	box-shadow: 0px 2px 10px rgba(58, 15, 77, .2);
+	background-color: rgba(255, 252, 254, 0.3);
     height: 150px;
     width: 200px;
     border-radius: 5px;
@@ -30,11 +32,11 @@
     display: inline-block;
 }
 
-.board_list_body:hover {
-	background-color: #edefff;
+.board_list_box:hover {
+	background-color: rgba(255, 252, 254, 0.6);
 }
 
-.board_list_body div {
+.board_list_box div {
 }
 
 .board_list_search {
@@ -71,33 +73,33 @@
 }
 
 /* boardView.jsp */
-#boardInner #detail {
+.view_inner {
 	margin: auto;
 	margin-top: 10%;
 	padding: 10px;
 	width: 700px;
 }
 
-#boardInner #detail div {
-	border: 1px solid #a6b1e1;
+.view_inner div {
 	border-radius: 5px;
 	margin: 2px 0px;
 	padding: 1px;
+	background-color: rgba(255, 252, 254, 0.8);
 }
 
-#boardInner #detail .bold {
+.view_inner .bold {
 	display: inline-block;
 	font-size: 16px;
 	font-weight: 500;
 }
 
-#boardInner #detail #content {
+.view_inner .content {
 	min-height: 120px;
 	padding: 20px 20px;
 	line-height: 20px;
 }
 
-#boardInner #detail button {
+.view_inner button {
 	border: 0px solid;
 	border-radius: 4px;
 	background-color: #a6b1e1;
@@ -108,37 +110,24 @@
 	height: 35px;
 }
 
-#boardInner #replies {
+#replies {
 	margin: auto;
 	padding: 10px;
 	width: 700px;
 }
 
-#boardInner #replies ul {
+#replies ul {
 	border: 1px solid #a6b1e1;
 	border-radius: 5px;
 }
 
-#boardInner #replyWriteForm {
+#replyWriteForm {
 	margin: auto;
 	padding: 10px;
 	width: 700px;	
 }
 
-#boardInner #replyWriteForm div {
-	border: 1px solid #a6b1e1;
-	border-radius: 5px;
-	margin: 2px 0px;
-	padding: 1px;
-}
-
-#boardInner #replyModifyForm {
-	margin: auto;
-	padding: 10px;
-	width: 700px;	
-}
-
-#boardInner #replyModifyForm div {
+#replyWriteForm div {
 	border: 1px solid #a6b1e1;
 	border-radius: 5px;
 	margin: 2px 0px;
@@ -147,10 +136,23 @@
 
 #replyModifyForm {
 	display: none;
-}	
+}
+
+#replyModifyForm {
+	margin: auto;
+	padding: 10px;
+	width: 700px;	
+}
+
+#replyModifyForm div {
+	border: 1px solid #a6b1e1;
+	border-radius: 5px;
+	margin: 2px 0px;
+	padding: 1px;
+}
 
 /* boardWrite.jsp */
-#boardInner #write {
+.write_inner {
 	margin: auto;
 	margin-top: 10%;
 	margin-bottom: 10%;
@@ -158,27 +160,27 @@
 	width: 700px;
 }
 
-#boardInner #write div {
-	border: 1px solid #a6b1e1;
+.write_inner div {
 	border-radius: 5px;
 	line-height: 30px;
 	margin: 2px 0px;
 	padding: 0 10px;
+	background-color: rgba(255, 252, 254, 0.3);
 }
 
-#boardInner #write input[type='text'], #boardInner #write input[type='password']
-	{
+.write_inner input[type='text'], 
+.write_inner input[type='password'] {
 	border: 0px;
 }
 
-#boardInner #write textarea {
+.write_inner textarea {
 	border: 0px;
 	line-height: 20px;
 	min-height: 120px;
 	padding: 20px 20px;
 }
 
-#boardInner #write>input {
+.write_inner > input {
 	border: 0px solid;
 	border-radius: 4px;
 	background-color: #a6b1e1;
@@ -190,7 +192,7 @@
 }
 
 /* boardModify */
-#boardInner #modify {
+.modify_inner {
 	margin: auto;
 	margin-top: 10%;
 	margin-bottom: 10%;
@@ -198,27 +200,27 @@
 	width: 700px;
 }
 
-#boardInner #modify div {
-	border: 1px solid #a6b1e1;
+.modify_inner div {
 	border-radius: 5px;
 	line-height: 30px;
 	margin: 2px 0px;
 	padding: 0 10px;
+	background-color: rgba(255, 252, 254, 0.3);
 }
 
-#boardInner #modify input[type='text'], #boardInner #modify input[type='password']
-	{
+.modify_inner input[type='text'], 
+.modify_inner input[type='password'] {
 	border: 0px;
 }
 
-#boardInner #modify textarea {
+.modify_inner textarea {
 	border: 0px;
 	line-height: 20px;
 	min-height: 120px;
 	padding: 20px 20px;
 }
 
-#boardInner #modify>input {
+.modify_inner > input {
 	border: 0px solid;
 	border-radius: 4px;
 	background-color: #a6b1e1;
@@ -230,9 +232,10 @@
 }
 
 /* boardCheck */
-#boardInner #check {
+.check_inner {
+	background-color: rgba(255, 252, 254, 0.8);
+	box-shadow: 0px 2px 10px rgba(58, 15, 77, 0.2);
 	border-radius: 5px;
-	background-color: #f4eeff;
 	margin: auto;
 	margin-top: 10%;
 	margin-bottom: 10%;
@@ -241,12 +244,12 @@
 	height: 120px;
 }
 
-#boardInner #check div {
+.check_inner div {
 	margin-bottom: 10px;
 	text-align: center;
 }
 
-#boardInner #check input[type='password'] {
+.check_inner input[type='password'] {
 	border: 1px solid #D1D1D1;
 	border-radius: 5px;
 	line-height: 30px;
@@ -254,7 +257,7 @@
 	padding: 0 10px;
 }
 
-#boardInner #check #buttons input {
+.check_inner #buttons input {
 	border: 0px solid;
 	border-radius: 4px;
 	background-color: #a6b1e1;
