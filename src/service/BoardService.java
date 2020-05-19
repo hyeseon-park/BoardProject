@@ -24,21 +24,21 @@ public class BoardService {
 	private static final String UPLOAD_PATH = "c:\\files";
 
 	public boolean writeBoard(Board board, MultipartFile file) {
-		if (file.isEmpty()) {
-			return true;
-		} else {
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		if (!file.isEmpty()) {			
 			String changedName = writeFile(file);
-			Map<String, Object> fileParam = new HashMap<String, Object>();
-			fileParam.put("bTitle", board.getbTitle());
-			fileParam.put("bContent", board.getbContent());
-			fileParam.put("bPW", board.getbPW());
-			fileParam.put("bName", board.getbName());
-			fileParam.put("fName", changedName);
-			if (boardDao.insertBoard(fileParam) > 0) {
-				return true;
-			}
+			boardMap.put("fName", changedName);
+		} 
+		boardMap.put("bTitle", board.getbTitle());
+		boardMap.put("bContent", board.getbContent());
+		boardMap.put("bPW", board.getbPW());
+		boardMap.put("bName", board.getbName());
+		
+		if (boardDao.insertBoard(boardMap) > 0) {
+			return true;
+		} else {			
+			return false;
 		}
-		return false;
 	}
 
 	private String writeFile(MultipartFile file) {
@@ -62,15 +62,15 @@ public class BoardService {
 		return false;
 	}
 
-	public boolean removeBoard(Board board) {
-		if (boardDao.deleteBoard(board.getbNum()) > 0) {
+	public boolean removeBoard(int bNum) {
+		if (boardDao.deleteBoard(bNum) > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	public Board getBoard(int num) {
-		return boardDao.selectBoard(num);
+	public Board getBoard(int bNum) {
+		return boardDao.selectBoard(bNum);
 	}
 
 	public List<Board> getAllBoards() {
