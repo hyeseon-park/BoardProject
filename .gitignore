@@ -24,3 +24,7 @@ hs_err_pid*
 /.classpath
 /.project
 /.springBeans
+
+### Java-Web ###
+## ignoring target file
+target/
