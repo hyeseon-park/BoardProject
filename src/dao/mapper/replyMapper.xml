@@ -3,31 +3,31 @@
 <mapper namespace="dao.ReplyDao">
 
 	<insert id="insertReply" parameterType="reply">
-		insert into reply 
+		insert into tbl_reply 
 		(r_num, r_name, r_pw, r_content, b_num)
 		values (#{rNum}, #{rName}, #{rPW}, #{rContent}, #{bNum})
 	</insert>
 	
 	<update id="updateReply" parameterType="reply">
-		update reply
+		update tbl_reply
 		set r_name=#{rName}, r_pw=#{rPW}, r_content=#{rContent}
 		where r_num=#{rNum}
 	</update>
 	
 	<delete id="deleteReply" parameterType="int">
-		delete from reply
+		delete from tbl_reply
 		where r_num=#{rNum}
 	</delete>
 	
 	<select id="selectReplyByRNum" parameterType="int" resultMap="replyMap">
 		select * 
-		from reply
+		from tbl_reply
 		where r_num=#{rNum} 
 	</select>
 	
 	<select id="selectRepliesByBNum" parameterType="int" resultMap="replyMap">
 		select * 
-		from reply
+		from tbl_reply
 		where r_num=#{bNum} 
 	</select>
 	

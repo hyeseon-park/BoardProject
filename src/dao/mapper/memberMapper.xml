@@ -3,20 +3,20 @@
 <mapper namespace="dao.MemberDao">
 
 	<insert id="insertMember" parameterType="member">
-		insert into member 
+		insert into tbl_member 
 		(m_num, m_id, m_pw, m_name)
 		values (#{mNum}, #{mID}, #{mPW}, #{mName})
 	</insert>
 	
 	<select id="selectMember" parameterType="int" resultMap="memberMap">
 		select * 
-		from member
+		from tbl_member
 		where m_num=#{mNum}
 	</select>
 
 	<select id="selectMemberByMID" parameterType="String" resultMap="memberMap">
 		select * 
-		from member
+		from tbl_member
 		where m_id=#{mID}
 	</select>	
 	
