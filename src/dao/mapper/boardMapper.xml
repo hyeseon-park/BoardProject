@@ -19,17 +19,17 @@
 		where b_num=#{bNum}
 	</delete>
 	
-	<select id="selectBoard" parameterType="int" resultType="board">
+	<select id="selectBoard" parameterType="int" resultMap="boardMap">
 		select * 
 		from board
 		where b_num=#{bNum} 
 	</select>
 	
-	<select id="selectAllBoards" resultType="board">
+	<select id="selectAllBoards" resultMap="boardMap">
 		select * from board
 	</select>
 	
-	<select id="selectSearchedBoards" parameterType="map" resultType="board">
+	<select id="selectSearchedBoards" parameterType="map" resultMap="boardMap">
 		select b_num, b_title, b_name 
 		from board
 		where 1=0
@@ -48,4 +48,12 @@
 			order by b_num desc
 	</select>
 	
+	<resultMap type="board" id="boardMap">
+		<result column="b_num" property="bNum"/>
+		<result column="b_title" property="bTitle"/>
+		<result column="b_content" property="bContent"/>
+		<result column="b_pw" property="bPW"/>
+		<result column="b_name" property="bName"/>
+		<result column="f_name" property="fName"/>
+	</resultMap>
 </mapper>

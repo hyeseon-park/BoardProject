@@ -19,13 +19,13 @@
 		where r_num=#{rNum}
 	</delete>
 	
-	<select id="selectReplyByRNum" parameterType="int" resultType="reply">
+	<select id="selectReplyByRNum" parameterType="int" resultMap="replyMap">
 		select * 
 		from reply
 		where r_num=#{rNum} 
 	</select>
 	
-	<select id="selectRepliesByBNum" parameterType="int" resultType="reply">
+	<select id="selectRepliesByBNum" parameterType="int" resultMap="replyMap">
 		select * 
 		from reply
 		where r_num=#{bNum} 
