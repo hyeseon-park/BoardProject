@@ -18,7 +18,6 @@ body {
 	margin-top: 10%;
 	padding: 10px;
 	width: 700px;
-	text-align: center;
 }
 
 .board_list_box {
@@ -30,6 +29,7 @@ body {
     margin: 2px;
     padding: 10px;
     display: inline-block;
+    text-align: center;
 }
 
 .board_list_box:hover {
@@ -37,6 +37,10 @@ body {
 }
 
 .board_list_box div {
+	height: 150px;
+    width: 200px;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .board_list_search {

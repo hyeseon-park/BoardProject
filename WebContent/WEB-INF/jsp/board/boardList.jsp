@@ -22,9 +22,8 @@
 			<div class="board_write_btn" onclick="location.href='${contextPath}/board/write'">글쓰기</div>
 			
 			<c:forEach items="${boardList}" var="board">
-				<div class="board_list_box">
-					<div><a href="view?bNum=${board.bNum}">${board.bTitle}</a></div>
-					<div>${board.bName}</div>
+				<div class="board_list_box" onclick="location.href='view?bNum=${board.bNum}'">
+					<div>${board.bTitle}</div>
 				</div>
 			</c:forEach>
 		</div>
